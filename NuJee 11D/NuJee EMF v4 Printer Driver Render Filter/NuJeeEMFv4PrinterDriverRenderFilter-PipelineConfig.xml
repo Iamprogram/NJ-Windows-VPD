@@ -1,0 +1,12 @@
+
+<Filters>
+   <Filter dll            = "NuJeeEMFv4PrinterDriverRenderFilter.dll"
+           clsid          = "{5b95db99-3649-464b-923c-5b86253525d4}"
+           name           = "NuJeeEMFv4PrinterDriverRenderFilter">
+           <Input   guid  = "{b8cf8530-5562-47c4-ab67-b1f69ecf961e}" comment="IID_IXpsDocumentProvider"/>
+           <Output  guid  = "{65bb7f1b-371e-4571-8ac7-912f510c1a38}" comment="IID_IPrintWriteStream"/>
+     <!-- Output  guid  = "{4368d8a2-4181-4a9f-b295-3d9a38bb9ba0}" comment="IID_IXpsDocumentConsumer"/ -->
+   </Filter>
+   <FilterServiceProvider dll = "XpsRasterService.dll" />
+</Filters>
+

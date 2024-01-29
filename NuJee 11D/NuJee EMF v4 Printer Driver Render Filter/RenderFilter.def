@@ -1,0 +1,15 @@
+;
+;   File Name:
+;
+;      RenderFilter.def
+;
+;   Abstract:
+;
+;      Defines DLL exports for NuJeeEMFv4PrinterDriverRenderFilter.dll
+;
+
+LIBRARY NuJeeEMFv4PrinterDriverRenderFilter
+
+EXPORTS
+    DllGetClassObject PRIVATE
+    DllCanUnloadNow PRIVATE

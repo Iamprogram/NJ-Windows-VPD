@@ -1,0 +1,425 @@
+*%
+*% This file is a sample GPD demonstrating basic printer features/options
+*%
+*%
+
+*%******************************************************************************
+*%: The following root-level attributes should be modified to suit your printer
+*%******************************************************************************
+*GPDFileName: "NuJeeEMFv4PrinterDriver.GPD"
+*GPDFileVersion: "1.0"
+*GPDSpecVersion: "1.0"
+*Include:      "StdNames.gpd"
+*%**************************************************
+*% V4 GPD-based printer drivers must include msxpsinc.GPD file
+*%**************************************************
+*Include:      "msxpsinc.gpd"
+*ModelName:    "Model name goes here"
+*MasterUnits:  PAIR(1200, 1200)
+*PrinterType:  PAGE
+*MaxCopies:    10
+*Command: CmdSendBlockData { *Cmd : "" }
+
+*PrintSchemaPrivateNamespaceURI: "Your private namespace URI goes here"
+
+
+
+*%******************************************************************************
+*%                             Orientation
+*%******************************************************************************
+*Feature: Orientation
+{
+    *rcNameID: =ORIENTATION_DISPLAY
+    *DefaultOption: PORTRAIT
+
+    *Option: PORTRAIT
+    {
+        *rcNameID: =PORTRAIT_DISPLAY
+    }
+
+    *Option: LANDSCAPE_CC270
+    {
+        *rcNameID: =LANDSCAPE_DISPLAY
+    }
+}
+
+*%******************************************************************************
+*%                             Input Bin
+*% The "InputBin" feature demonstrates an example of how to use
+*% GPD-based constraints
+*% TODO: Add the A4 constraint
+*%
+*% Learn more: Selection Constraints
+*% http://msdn.microsoft.com/en-us/library/ff562063(VS.85).aspx
+*%******************************************************************************
+*Feature: InputBin
+{
+    *rcNameID: =PAPER_SOURCE_DISPLAY
+    *DefaultOption: FORMSOURCE
+
+    *Option: FORMSOURCE
+    {
+        *rcNameID: =AUTO_DISPLAY
+        *Constraints: PaperSize.LETTER
+    }
+    *Option: UPPER
+    {
+        *rcNameID: =UPPER_TRAY_DISPLAY
+    }
+}
+
+*%******************************************************************************
+*%                            PageOutputColor
+*%******************************************************************************
+*Feature: ColorMode
+{
+    *rcNameID: =COLOR_PRINTING_MODE_DISPLAY
+    *DefaultOption: Color
+
+    *Option: Mono
+    {
+        *rcNameID: =MONO_DISPLAY
+        *DevNumOfPlanes: 1
+        *DevBPP: 1
+        *Color?: FALSE
+    }
+
+    *Option: Grayscale
+    {
+        *rcNameID: =8BPP_DISPLAY
+        *DevNumOfPlanes: 1
+        *DevBPP: 8
+        *DrvBPP: 8
+        *PaletteSize: 256
+        *Color?: FALSE
+    }
+
+    *Option: Color
+    {
+        *rcNameID: =24BPP_DISPLAY
+        *DevNumOfPlanes: 1
+        *DevBPP: 24
+        *DrvBPP: 24
+        *PaletteSize: 1
+    }
+}
+
+*%******************************************************************************
+*%                              Resolution
+*%******************************************************************************
+*Feature: Resolution
+{
+    *rcNameID: =RESOLUTION_DISPLAY
+    *DefaultOption: Option1
+
+    *Option: Option1
+    {
+        *Name: "600 x 600 " =DOTS_PER_INCH
+        *DPI: PAIR(600, 600)
+        *TextDPI: PAIR(600, 600)
+        *SpotDiameter: 100
+    }
+}
+
+*%******************************************************************************
+*%                            PageMediaSize - Paper Size
+*%******************************************************************************
+*Feature: PaperSize
+{
+    *rcNameID: =PAPER_SIZE_DISPLAY
+    *DefaultOption: LETTER
+
+    *Option: A3
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 9667
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(13460, 19440)
+                *PrintableOrigin: PAIR(284, 200)
+                *CursorOrigin: PAIR(284, 200)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(13628, 19368)
+                *PrintableOrigin: PAIR(200, 236)
+                *CursorOrigin: PAIR(200, 19604)
+            }
+        }
+    }
+
+    *Option: A4
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4249
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(9352, 13628)
+                *PrintableOrigin: PAIR(284, 200)
+                *CursorOrigin: PAIR(284, 200)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(9520, 13556)
+                *PrintableOrigin: PAIR(200, 236)
+                *CursorOrigin: PAIR(200, 13792)
+            }
+        }
+    }
+
+    *Option: B4
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 6391
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(11572, 16796)
+                *PrintableOrigin: PAIR(284, 200)
+                *CursorOrigin: PAIR(284, 200)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(11740, 16724)
+                *PrintableOrigin: PAIR(200, 236)
+                *CursorOrigin: PAIR(200, 16960)
+            }
+        }
+    }
+
+    *Option: B5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 3198
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(7900, 11140)
+                *PrintableOrigin: PAIR(352, 300)
+                *CursorOrigin: PAIR(300, 100)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(7760, 11140)
+                *PrintableOrigin: PAIR(300, 400)
+                *CursorOrigin: PAIR(100, 11940)
+            }
+        }
+    }
+
+    *Option: EXECUTIVE
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(8100, 11500)
+                *PrintableOrigin: PAIR(300, 300)
+                *CursorOrigin: PAIR(300, 200)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(8300, 11500)
+                *PrintableOrigin: PAIR(200, 300)
+                *CursorOrigin: PAIR(200, 12300)
+            }
+        }
+    }
+
+    *Option: ENV_10
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4348, 11000)
+                *PrintableOrigin: PAIR(300, 200)
+                *CursorOrigin: PAIR(300, 200)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(4548, 10920)
+                *PrintableOrigin: PAIR(200, 240)
+                *CursorOrigin: PAIR(200, 11160)
+            }
+        }
+    }
+
+    *Option: LEGAL
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 1692
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(9000, 15500)
+                *PrintableOrigin: PAIR(400, 600)
+                *CursorOrigin: PAIR(180, 300)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(9000, 15500)
+                *PrintableOrigin: PAIR(400, 900)
+                *CursorOrigin: PAIR(180, 16500)
+            }
+        }
+    }
+
+    *Option: LETTER
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 1028
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(9500, 12500)
+                *PrintableOrigin: PAIR(400, 400)
+                *CursorOrigin: PAIR(300, 300)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(9500, 12200)
+                *PrintableOrigin: PAIR(450, 300)
+                *CursorOrigin: PAIR(200, 12900)
+            }
+        }
+    }
+
+    *Option: ENV_MONARCH
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4048, 8600)
+                *PrintableOrigin: PAIR(300, 200)
+                *CursorOrigin: PAIR(300, 200)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(4248, 8520)
+                *PrintableOrigin: PAIR(200, 240)
+                *CursorOrigin: PAIR(200, 8760)
+            }
+        }
+    }
+
+    *Option: TABLOID
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(12000, 19200)
+                *PrintableOrigin: PAIR(400, 400)
+                *CursorOrigin: PAIR(400, 400)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(12000, 19200)
+                *PrintableOrigin: PAIR(400, 600)
+                *CursorOrigin: PAIR(400, 18000)
+            }
+        }
+    }
+}
+
+
+
+
+*%******************************************************************************************
+*%                   Sample GDL Autoconfiguration feature: Duplex Unit
+*%******************************************************************************************
+*Feature: DuplexUnit
+{
+        *Name: "Optional Duplex Unit"
+        *FeatureType: PRINTER_PROPERTY
+        *DefaultOption: FALSE
+        *Option: FALSE
+        {
+            *Name:  "Not Installed"
+            *DisabledFeatures: LIST(Duplex.VERTICAL, Duplex.HORIZONTAL)
+        }
+        *Option: TRUE
+        {
+            *Name:  "Installed"
+        }
+}
+
+
+
+*%******************************************************************************************
+*%                                      Duplex Type
+*%******************************************************************************************
+*Feature: Duplex
+{
+        *rcNameID: =TWO_SIDED_PRINTING_DISPLAY
+        *DefaultOption: NONE
+        *Option: NONE
+        {
+                *rcNameID: =NONE_DISPLAY
+        }
+        *Option: VERTICAL
+        {
+                *rcNameID: =FLIP_ON_LONG_EDGE_DISPLAY
+        }
+        *Option: HORIZONTAL
+        {
+                *rcNameID: =FLIP_ON_SHORT_EDGE_DISPLAY
+        }
+}
+
+
+*%******************************************************************************************
+*% Example of a IHV private feature. This feature demonstrates usage of the
+*% PrintSchemaKeywordMap keyword to map the GPD custom feature/option to
+*% public Print Schema keywords
+*%
+*% Learn more: New root-level-only GPD attributes for Windows Vista
+*% http://msdn.microsoft.com/en-us/library/ff550564(VS.85).aspx
+*%******************************************************************************************
+*Feature: IHVStapling
+{
+    *Name: "Staple"
+    *DefaultOption: Off
+    *PrintSchemaKeywordMap: "JobStapleAllDocuments"
+
+    *Option: Off
+    {
+        *Name: "Off"
+        *PrintSchemaKeywordMap: "None"
+    }
+
+    *Option: StapleTopLeft
+    {
+        *Name: "Staple Top left"
+        *PrintSchemaKeywordMap: "StapleTopLeft"
+    }
+}
+
+*%******************************************************************************
+*%                         Cursor Commands
+*% The following cursor commands are mandatory
+*%
+*% Learn more: Cursor Commands
+*% http://msdn.microsoft.com/en-us/library/ff547223(VS.85).aspx
+*%******************************************************************************
+*Command: CmdCR { *Cmd : "" }
+*Command: CmdLF { *Cmd : "" }
+*Command: CmdFF { *Cmd : "" }

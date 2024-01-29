@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Driver Files">
+      <UniqueIdentifier>{D97A746F-F86D-46AB-B08E-86E9BFC6B336}</UniqueIdentifier>
+      <Extensions>inf;inv;inx;mof;mc;</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Inf Include="NuJeeEMFv4PrinterDriver.inf">
+      <Filter>Driver Files</Filter>
+    </Inf>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NuJeeEMFv4PrinterDriver.gpd">
+      <Filter>Driver Files</Filter>
+    </None>
+    <None Include="NuJeeEMFv4PrinterDriver-manifest.ini">
+      <Filter>Driver Files</Filter>
+    </None>
+    <None Include="..\PrinterExtensionSample\PrinterExtensionLibrary\bin\Win10 Debug\Microsoft.Samples.Printing.PrinterExtensionLibrary.dll">
+      <Filter>Driver Files</Filter>
+    </None>
+    <None Include="..\PrinterExtensionSample\ExtensionSample\bin\x64\Win10 Debug\PrinterExtensionSample.exe">
+      <Filter>Driver Files</Filter>
+    </None>
+    <None Include="..\PrinterExtensionSample\ExtensionSample\bin\x64\Win10 Debug\PrinterExtensionSample.exe.config">
+      <Filter>Driver Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
